@@ -21,8 +21,8 @@ mkIf (cfg.layout == "trench") {
     shadow_scale = "1.0";
     shadow_offset = "[0, 0]";
     shadow_ignore_window = "true";
-    gaps_in = "2.5";
-    gaps_out = "5";
+    gaps_in = "5";
+    gaps_out = "10";
     rounding = "5";
     border_size = "2";
     dwindle.no_gaps_when_only = "true";

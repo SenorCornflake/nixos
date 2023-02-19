@@ -176,7 +176,7 @@ in
       }
       .container {
         background-color: rgba(${hexToRGBString "," layout.background}, 0.9);
-        border-left: solid 2px rgba(${hexToRGBString "," layout.background}, 0.4);
+        border-right: solid 2px rgba(${hexToRGBString "," layout.background}, 0.4);
         padding-top: 5px;
         padding-bottom: 5px;
       }
