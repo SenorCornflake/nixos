@@ -1,0 +1,152 @@
+[
+	{
+		"name": "Toggle Nightmode",
+		"action": "toggle_nightmode"
+	},
+	{
+		"name": "Toggle touchpad while typing",
+		"action": "toggle_touchpad_typing"
+	},
+	{
+		"name": "Change Wallpaper",
+		"action": "change_wallpaper"
+	},
+	{
+		"name": "Generate base16 theme",
+		"action": [
+			{
+				"name": "Flavours",
+				"action": [
+					{
+						"name": "Dark",
+						"action": "generate_base16_theme {} flavours dark"
+					},
+					{
+						"name": "Light",
+						"action": "generate_base16_theme {} flavours light"
+					}
+				]
+			},
+			{
+				"name": "Schemer2",
+				"action": "generate_base16_theme {} schemer2"
+			},
+			{
+				"name": "Pywal",
+				"action": [
+					{
+						"name": "Dark",
+						"action": [
+							{
+								"name": "Wal",
+								"action": "generate_base16_theme {} pywal dark wal"
+							},
+							{
+								"name": "schemer2",
+								"action": "generate_base16_theme {} pywal dark schemer2"
+							},
+							{
+								"name": "Colorz",
+								"action": "generate_base16_theme {} pywal dark colorz"
+							},
+							{
+								"name": "haishoku",
+								"action": "generate_base16_theme {} pywal dark haishoku"
+							},
+							{
+								"name": "Colorthief",
+								"action": "generate_base16_theme {} pywal dark colorthief"
+							}
+						]
+					},
+					{
+						"name": "Light",
+						"action": [
+							{
+								"name": "Wal",
+								"action": "generate_base16_theme {} pywal light wal"
+							},
+							{
+								"name": "schemer2",
+								"action": "generate_base16_theme {} pywal light schemer2"
+							},
+							{
+								"name": "Colorz",
+								"action": "generate_base16_theme {} pywal light colorz"
+							},
+							{
+								"name": "haishoku",
+								"action": "generate_base16_theme {} pywal light haishoku"
+							},
+							{
+								"name": "Colorthief",
+								"action": "generate_base16_theme {} pywal light colorthief"
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+    {
+        "name": "Exit",
+        "action": [
+            {
+                "name": "Logout",
+                "prompt": "Are you sure?",
+                "action": [
+                    {
+                        "name": "Cancel",
+                        "action": ""
+                    },
+                    {
+                        "name": "Continue",
+                        "action": "kill -9 -1"
+                    }
+                ]
+            },
+            {
+                "name": "Reboot",
+                "prompt": "Are you sure?",
+                "action": [
+                    {
+                        "name": "Cancel",
+                        "action": ""
+                    },
+                    {
+                        "name": "Continue",
+                        "action": "shutdown -r now"
+                    }
+                ]
+            },
+            {
+                "name": "Shutdown",
+                "prompt": "Are you sure?",
+                "action": [
+                    {
+                        "name": "Cancel",
+                        "action": ""
+                    },
+                    {
+                        "name": "Continue",
+                        "action": "shutdown now"
+                    }
+                ]
+            },
+            {
+                "name": "Suspend",
+                "prompt": "Are you sure?",
+                "action": [
+                    {
+                        "name": "Cancel",
+                        "action": ""
+                    },
+                    {
+                        "name": "Continue",
+                        "action": "systemctl suspend"
+                    }
+                ]
+            }
+        ]
+    }
+]
