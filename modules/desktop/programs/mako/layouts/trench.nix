@@ -14,7 +14,7 @@ mkIf (cfg.layout == "trench") {
       height = 300;
       width = 300;
       borderSize = 2;
-      anchor = "bottom-right";
+      anchor = "bottom-left";
       defaultTimeout = 5000;
       ignoreTimeout = false;
       borderRadius = 10;
