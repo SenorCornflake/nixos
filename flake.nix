@@ -81,10 +81,6 @@
       url = "github:rebelot/kanagawa.nvim";
       flake = false;
     };
-    nvim-treesitter-context = {
-      url = "github:lewis6991/nvim-treesitter-context";
-      flake = false;
-    };
 	};
 
 	outputs = inputs@{ nixpkgs, nixpkgs-unstable, nixpkgs-stable, ... }:

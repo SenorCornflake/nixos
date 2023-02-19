@@ -22,7 +22,6 @@ let
       "zenbones-nvim"
       "alpha-nvim"
       "kanagawa-nvim"
-      "nvim-treesitter-context"
     ]
     (plugin-name: pkgs.vimUtils.buildVimPlugin {
       name = plugin-name;  
@@ -119,7 +118,6 @@ in
           plenary-nvim # dependancy for many plugins
 
           # Plugs
-          symbols-outline-nvim
           nvim-treesitter-refactor
           (nvim-treesitter.withPlugins (p: [
             p.php
@@ -182,6 +180,7 @@ in
           material-nvim
           nord-nvim
           tokyonight-nvim
+          nvim-navic
         ] ++ (pkgs.lib.mapAttrsToList (_: plugin: plugin) flake-plugins);
       };
     };

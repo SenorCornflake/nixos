@@ -1,13 +1,21 @@
-local add_text = "+"
-local delete_text = "-"
-local change_text = "~"
-local changedelete_text = "~"
-local topdelete_text = "^"
+-- local add_text = "+"
+-- local delete_text = "-"
+-- local change_text = "~"
+-- local changedelete_text = "~"
+-- local topdelete_text = "^"
+
+local add_text          = '│'
+local change_text       = '│'
+local delete_text       = '_'
+local topdelete_text    = '‾'
+local changedelete_text = '~'
+local untracked_text    = '┆'
 
 SetupGitsigns = function()
 	require('gitsigns').setup {
 		signs = {
 			add          = {hl = 'GitSignsAdd'   , text = add_text, numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+			untracked_text = {hl = 'GitSignsAdd'   , text = untracked_text, numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
 			change       = {hl = 'GitSignsChange', text = change_text, numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
 			delete       = {hl = 'GitSignsDelete', text = delete_text, numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
 			topdelete    = {hl = 'GitSignsDelete', text = topdelete_text, numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
@@ -53,7 +61,6 @@ SetupGitsigns = function()
 			internal = true
 		}
 	}
-
 end
 
 SetupGitsigns()

@@ -1,4 +1,6 @@
 local lspconfig = require "lspconfig"
+local navic = require "nvim-navic"
+
 
 local util = require "neovim_configuration.util"
 
@@ -75,8 +77,15 @@ local servers = {
 
 -- Print a message when a server starts
 for server, config in pairs(servers) do
-	config.on_attach = config.on_attach or function()
+	config.on_attach = function(client, bufnr)
 		print("Started " .. server)
+
+		if client.server_capabilities.documentSymbolProvider then
+			print("Navic enabled")
+			navic.attach(client, bufnr)
+		else
+			print("Navic not supported")
+		end
 	end
   	config.capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -94,6 +103,15 @@ vim.cmd "autocmd ColorSchemePre * highlight clear DiagnosticError"
 vim.cmd "autocmd ColorSchemePre * highlight clear DiagnosticWarn"
 vim.cmd "autocmd ColorSchemePre * highlight clear DiagnosticInfo"
 vim.cmd "autocmd ColorSchemePre * highlight clear DiagnosticHint"
+
+vim.cmd "autocmd ColorSchemePre * highlight clear ScrollbarError"
+vim.cmd "autocmd ColorSchemePre * highlight clear ScrollbarWarn"
+vim.cmd "autocmd ColorSchemePre * highlight clear ScrollbarInfo"
+vim.cmd "autocmd ColorSchemePre * highlight clear ScrollbarHint"
+vim.cmd "autocmd ColorSchemePre * highlight clear ScrollbarErrorHandle"
+vim.cmd "autocmd ColorSchemePre * highlight clear ScrollbarWarnHandle"
+vim.cmd "autocmd ColorSchemePre * highlight clear ScrollbarInfoHandle"
+vim.cmd "autocmd ColorSchemePre * highlight clear ScrollbarHintHandle"
 
 SetupLspHighlights = function()
 	-- Check if lsp highlights have been set
@@ -116,6 +134,15 @@ SetupLspHighlights = function()
 			{
 				{ "SignColumn", "bg" },
 				{ "Normal", "bg" }
+			},
+			{
+				cterm = "0",
+				gui = "#000000"
+			}
+		)
+		local cursor = util.get_color(
+			{
+				{ "CursorLine", "bg" },
 			},
 			{
 				cterm = "0",

@@ -406,22 +406,6 @@
         "type": "github"
       }
     },
-    "nvim-treesitter-context": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1652175020,
-        "narHash": "sha256-dYw/Y6+Eni7gTSjvCCl7E6ho8xSTxDYAwH3xGEhf54Q=",
-        "owner": "lewis6991",
-        "repo": "nvim-treesitter-context",
-        "rev": "c931a3136a696c1827eda78ac678aea542115bd0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "lewis6991",
-        "repo": "nvim-treesitter-context",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "alpha-nvim": "alpha-nvim",
@@ -440,7 +424,6 @@
         "nur": "nur",
         "nvim-base16": "nvim-base16",
         "nvim-scrollbar": "nvim-scrollbar",
-        "nvim-treesitter-context": "nvim-treesitter-context",
         "substrata-nvim": "substrata-nvim",
         "vim-enfocado": "vim-enfocado",
         "vim-moonfly-colors": "vim-moonfly-colors",

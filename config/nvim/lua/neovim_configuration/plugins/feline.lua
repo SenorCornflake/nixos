@@ -2,6 +2,7 @@ local util = require "neovim_configuration.util"
 local cmd = vim.cmd
 local lsp = require('feline.providers.lsp')
 local lsp_severity = vim.diagnostic.severity
+local navic = require "nvim-navic"
 
 SetupStatusline = function()
 	local components = {
@@ -61,6 +62,11 @@ SetupStatusline = function()
 				{"Tag", "fg"},
 			}
 		),
+		alt_accent = util.get_color(
+			{
+				{"Function", "fg"},
+			}
+		),
 		comment = util.get_color(
 			{
 				{"Comment", "fg"},
@@ -74,6 +80,7 @@ SetupStatusline = function()
 	vim.cmd("hi StatuslineModule ctermbg=8 ctermfg=15 guibg=" .. StatuslineColors.bg.gui .. " guifg=" .. StatuslineColors.fg.gui)
 	vim.cmd("hi StatuslineModuleAlt ctermbg=0 ctermfg=7 guibg=" .. StatuslineColors.alt_bg.gui .. " guifg=" .. StatuslineColors.comment.gui)
 	vim.cmd("hi StatuslineModuleHighlighted ctermbg=8 ctermfg=14 guibg=" .. StatuslineColors.bg.gui .. " guifg=" .. StatuslineColors.accent.gui)
+	vim.cmd("hi StatuslineModuleHighlightedAlt ctermbg=8 ctermfg=14 guibg=" .. StatuslineColors.bg.gui .. " guifg=" .. StatuslineColors.alt_accent.gui)
 
 	local buffer_not_empty = function()
 		if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
@@ -180,6 +187,24 @@ SetupStatusline = function()
 			return ""
 		end,
 		hl = "StatuslineModule",
+	}
+
+	ar {
+		provider = function()
+			return navic.get_location()
+		end,
+		enabled = function()
+			return navic.is_available()
+		end,
+		hl = "StatuslineModuleHighlightedAlt",
+		left_sep = {
+			str = "  ",
+			hl = "StatuslineModuleHighlightedAlt",
+		},
+		right_sep = {
+			str = " ",
+			hl = "StatuslineModuleHighlightedAlt",
+		},
 	}
 
 	ar {
