@@ -22,6 +22,7 @@ let
       "zenbones-nvim"
       "alpha-nvim"
       "kanagawa-nvim"
+      "vscode-nvim"
     ]
     (plugin-name: pkgs.vimUtils.buildVimPlugin {
       name = plugin-name;  
@@ -66,7 +67,7 @@ in
 
       xdg.dataFile."neovim_transparent_background.txt" = {
         target = "neovim_transparent_background.txt";
-        text = if cfg.transparentBackground then "true" else "false"; 
+        text = (if cfg.transparentBackground then "true" else "false"); 
         recursive = false;
       };
 
@@ -174,13 +175,13 @@ in
           which-key-nvim
           winshift-nvim
           fwatch-nvim
+          nvim-navic
 
           catppuccin-nvim
           gruvbox-material
           material-nvim
           nord-nvim
           tokyonight-nvim
-          nvim-navic
         ] ++ (pkgs.lib.mapAttrsToList (_: plugin: plugin) flake-plugins);
       };
     };

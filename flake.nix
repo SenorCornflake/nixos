@@ -53,6 +53,10 @@
       url = "github:wuelnerdotexe/vim-enfocado";
       flake = false;
     };
+    vscode-nvim = {
+      url = "github:Mofiqul/vscode.nvim";
+      flake = false;
+    };
     vim-moonfly-colors = {
       url = "github:bluz71/vim-moonfly-colors";
       flake = false;

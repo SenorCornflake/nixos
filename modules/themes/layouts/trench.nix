@@ -29,5 +29,10 @@ mkIf (cfg.layout == "trench") {
         kitty.layout = "trench";
       };
     };
+    shell = {
+      neovim = {
+        transparentBackground = true;
+      };
+    };
   };
 }

@@ -1,6 +1,20 @@
 local json = require "neovim_configuration.lib.json"
 local util = {}
 
+util.is_transparent_background = function()
+	local transparent_background = io.open(os.getenv("XDG_DATA_HOME") .. "/neovim_transparent_background.txt", "r")
+
+	if transparent_background ~= nil then
+		transparent_background = transparent_background:read()
+	end
+
+	if transparent_background == "true" and not vim.g.getting_colors then
+		return true
+	end
+
+	return false
+end
+
 -- Slightly easier map function
 util.map = function(mode, left, right, opts) 
 	opts = opts or { noremap = true, silent = true }

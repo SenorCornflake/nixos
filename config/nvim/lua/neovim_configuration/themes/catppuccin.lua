@@ -1,10 +1,11 @@
 local cmd = vim.cmd
+local util = require "neovim_configuration.util"
 
 local catppuccin = require("catppuccin")
 
 -- configure it
 catppuccin.setup {
-	transparent_background = false,
+	transparent_background = util.is_transparent_background(),
 	term_colors = false,
 	styles = {
 		comments = "italic",

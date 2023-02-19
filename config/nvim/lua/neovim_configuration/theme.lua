@@ -2,15 +2,7 @@ local util = require "neovim_configuration.util"
 local cmd = vim.cmd
 
 MANIPULATE_COLORSCHEME = function()
-	local transparent_background = io.open(os.getenv("XDG_DATA_HOME") .. "/neovim_transparent_background.txt", "r")
-
-	if transparent_background == nil then
-		transparent_background = "false"
-	else
-		transparent_background = transparent_background:read()
-	end
-
-	if transparent_background == "true" and not vim.g.getting_colors then
+	if util.is_transparent_background() then
 		vim.cmd "hi Normal guibg=none ctermbg=none"
 		vim.cmd "hi NormalNC guibg=none ctermbg=none"
 		vim.cmd "hi NormalFloat guibg=none ctermbg=none"

@@ -427,6 +427,7 @@
         "substrata-nvim": "substrata-nvim",
         "vim-enfocado": "vim-enfocado",
         "vim-moonfly-colors": "vim-moonfly-colors",
+        "vscode-nvim": "vscode-nvim",
         "yankassassin-vim": "yankassassin-vim",
         "zenbones-nvim": "zenbones-nvim"
       }
@@ -491,6 +492,22 @@
       "original": {
         "owner": "bluz71",
         "repo": "vim-moonfly-colors",
+        "type": "github"
+      }
+    },
+    "vscode-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1676017466,
+        "narHash": "sha256-X2IgIjO5NNq7vJdl09hBY1TFqHlsfF1xfllKr4osILI=",
+        "owner": "Mofiqul",
+        "repo": "vscode.nvim",
+        "rev": "db9ee339b5556aa832ca58871fd18f9467a18520",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mofiqul",
+        "repo": "vscode.nvim",
         "type": "github"
       }
     },

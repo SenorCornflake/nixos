@@ -16,7 +16,6 @@
     libnotify
     (writeShellScriptBin "apply_theme" ''
       flavours build $XDG_DATA_HOME/base16.yaml $XDG_DATA_HOME/flavours/base16/templates/kitty/templates/default.mustache > $XDG_DATA_HOME/kitty.conf
-      mkdir $XDG_DATA_HOME/wezterm
       flavours build $XDG_DATA_HOME/base16.yaml $XDG_DATA_HOME/flavours/base16/templates/wezterm/templates/default.mustache > $XDG_DATA_HOME/wezterm/wezterm.conf
       flavours build $XDG_DATA_HOME/base16.yaml $XDG_DATA_HOME/flavours/base16/templates/xresources/templates/default.mustache > $XDG_DATA_HOME/Xresources
 
