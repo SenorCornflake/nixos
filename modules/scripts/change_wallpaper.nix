@@ -16,14 +16,18 @@
       fi
     '')
     (writeShellScriptBin "change_wallpaper" ''
+      if [[ $1 == "" ]]; then
         wallpaper=$(ls ~/wallpapers | rofi -dmenu -p "Wallpaper: ")
+      elif [[ $1 = "random" ]]; then
+        wallpaper=$(ls ~/wallpapers | shuf -n 1)
+      fi
 
-        if [[ $wallpaper == "" ]]; then
-          exit
-        else
-          echo -n "$wallpaper" > $XDG_DATA_HOME/imperative_wallpaper
-          set_wallpaper
-        fi
-      '')
+      if [[ $wallpaper == "" ]]; then
+        exit
+      else
+        echo -n "$wallpaper" > $XDG_DATA_HOME/imperative_wallpaper
+        set_wallpaper
+      fi
+    '')
   ];
 }

@@ -242,6 +242,7 @@ bool
           bind = SUPER, Insert, exec, kb_layout
           bind = SUPER, N, exec, toggle_nightmode
           bind = SUPER_SHIFT, W, exec, change_wallpaper
+          bind = SUPER, R, exec, change_wallpaper random
           bind = SUPER, C, exec, commander "Commands: " rofi
 
           bind = SUPER, space, exec, makoctl dismiss -g
