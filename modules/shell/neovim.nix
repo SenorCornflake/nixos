@@ -160,6 +160,7 @@ in
           kommentary
           lspkind-nvim
           luasnip
+          friendly-snippets
           nvim-autopairs
           nvim-cmp
           nvim-lspconfig
