@@ -210,6 +210,8 @@ bool
 
           bindm = SUPER, mouse:272, movewindow
           bindm = SUPER, mouse:273, resizewindow
+          bind = SUPER, mouse:276, exec, hyprctl dispatch workspace e-1
+          bind = SUPER, mouse:275, exec, hyprctl dispatch workspace e+1
 
           bind = SUPER, M, submap, resize
 
