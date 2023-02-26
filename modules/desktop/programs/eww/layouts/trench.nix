@@ -40,7 +40,7 @@ in
       (deflisten volume :initial ""
         "volume")
       (deflisten workspaces :initial ""
-        "watch-hyprland-workspaces 0 '(label :class \"active-workspace\" :text \"<NAME>\")' '(label :class \"inactive-workspace\" :text \"<NAME>\")'")
+        "watch-hyprland-workspaces 0 '(label :class \"active-workspace\" :text \"<NAME>\")' '(eventbox :class \"eventbox\" :onclick \"hyprctl dispatch workspace <NAME>\" (label :class \"inactive-workspace\" :text \"<NAME>\"))'")
 
       (defwidget workspaces []
         (literal
@@ -106,25 +106,36 @@ in
         (box
           :orientation "v"
           :class "widget"
-          (label
-            :class "metric-icon"
-            :text "󰃠"
-            :xalign 0.3)
-          (label
-            :class "metric-text"
-            :text brightness)))
+          (eventbox
+            :onclick "brightnessctl s 5%-"
+            :onrightclick "brightnessctl s 5%+"
+            (box
+              :orientation "v"
+              (label
+                :class "metric-icon"
+                :text "󰃠"
+                :xalign 0.3)
+              (label
+                :class "metric-text"
+                :text brightness)))))
       (defwidget volume []
         (box
           :orientation "v"
           :class "widget"
-          (label
-            :class "metric-icon"
-            :xalign 0.4
-            :text {volume == "muted" ? "󰖁" : "󰕾"})
-          (label
-            :class "metric-text"
-            :visible {volume == "muted" ? false : true}
-            :text volume)))
+          (eventbox
+            :onclick "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+            :onmiddleclick "pavucontrol &"
+            :onrightclick "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+            (box
+              :orientation "v"
+              (label
+                :class "metric-icon"
+                :xalign 0.4
+                :text {volume == "muted" ? "󰖁" : "󰕾"})
+              (label
+                :class "metric-text"
+                :visible {volume == "muted" ? false : true}
+                :text volume)))))
       (defwidget date []
         (box
           :class "widget"
@@ -194,7 +205,7 @@ in
       .topstuff .widget {
         margin-bottom: 5px;
       }
-      .workspaces .active-workspace, .workspaces .inactive-workspace {
+      .workspaces .active-workspace, .workspaces .eventbox {
         padding: 0px 5px;
         min-width: 1rem;
       }

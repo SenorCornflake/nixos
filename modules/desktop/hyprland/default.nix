@@ -155,6 +155,8 @@ bool
 
           gestures {
               workspace_swipe = true
+              workspace_swipe_distance = 100
+              workspace_swipe_cancel_ratio = 0.2
           }
 
           misc {

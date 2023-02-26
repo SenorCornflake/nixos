@@ -177,6 +177,7 @@ in
           winshift-nvim
           fwatch-nvim
           nvim-navic
+          heirline-nvim
 
           catppuccin-nvim
           gruvbox-material
