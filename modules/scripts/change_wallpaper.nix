@@ -43,6 +43,7 @@ in
         exit
       elif [[ $wallpaper == "nix-wallpaper" ]]; then
         echo -n "${nix-wallpaper}/share/wallpapers/nixos-wallpaper.png" > $XDG_DATA_HOME/imperative_wallpaper
+        set_wallpaper
       else
         echo -n "$HOME/wallpapers/$wallpaper" > $XDG_DATA_HOME/imperative_wallpaper
         set_wallpaper
