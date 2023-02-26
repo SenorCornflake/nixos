@@ -48,6 +48,16 @@ mkIf (cfg.colorscheme == "base16") {
   modules = {
     theme = {
       imperative_wallpaper = true;
+
+      wallpaperBackground = hex base00;
+      wallpaperColors = {
+        color0 = hex base0A;
+        color1 = hex base0B;
+        color2 = hex base0C;
+        color3 = hex base0D;
+        color4 = hex base0E;
+        color5 = hex base0F;
+      };
     };
 
     desktop = {

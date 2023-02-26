@@ -20,7 +20,10 @@
       flavours build $XDG_DATA_HOME/base16.yaml $XDG_DATA_HOME/flavours/base16/templates/xresources/templates/default.mustache > $XDG_DATA_HOME/Xresources
 
       :r
+      change_wallpaper update
       echo -n "reload" > $XDG_DATA_HOME/neovim_reload
+      # To reload nix-wallpaper
+      hyprctl reload
     '')
     (writeShellScriptBin "generate_base16_theme" ''
       filterer=$1
