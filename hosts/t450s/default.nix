@@ -33,11 +33,8 @@
         media.enable = true;
         office.enable = true;
         qbittorrent.enable = true;
-        rofi.enable = true;
         ark.enable = true;
         thunar.enable = true;
-        mako.enable = false;
-        eww.enable = false;
         pavucontrol.enable = true;
         blueberry.enable = true;
         okular.enable = true;

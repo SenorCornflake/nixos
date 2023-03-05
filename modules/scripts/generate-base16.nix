@@ -132,7 +132,7 @@
         echo "$base16" | yq > $XDG_DATA_HOME/base16.json
       fi
 
-      echo -n "$wallpaper" > $XDG_DATA_HOME/imperative_wallpaper
+      echo -n "$HOME/wallpapers/$wallpaper" > $XDG_DATA_HOME/imperative_wallpaper
 
 
       apply_theme

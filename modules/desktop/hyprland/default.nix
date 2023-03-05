@@ -41,6 +41,12 @@ in
   };
 
   config = mkIf cfg.enable {
+
+    modules.desktop.programs = {
+      eww.enable = true;
+      mako.enable = true;
+      rofi.enable = true;
+    };
     environment.systemPackages = with pkgs; [
       polkit_gnome
       swaybg
