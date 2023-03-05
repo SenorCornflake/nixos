@@ -1,6 +1,8 @@
-{ inputs,  config, pkgs, lib,  ... }:
+{ inputs, config, pkgs, lib,  ... }:
 
-{
+with lib;
+
+mkIf config.modules.desktop.hyprland.enable {
   environment.systemPackages = with pkgs; [ socat ];
 
   modules.scripts.hyprland-title = pkgs.writeShellScriptBin "hyprland-title" ''

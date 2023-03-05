@@ -36,7 +36,6 @@
         ark.enable = true;
         thunar.enable = true;
         mako.enable = true;
-        waybar.enable = true;
         wlogout.enable = true;
         pavucontrol.enable = true;
         blueberry.enable = true;

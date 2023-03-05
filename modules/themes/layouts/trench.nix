@@ -18,7 +18,6 @@ mkIf (cfg.layout == "trench") {
 
       programs = {
         mako.layout = "trench";
-        waybar.layout = "default";
         tofi.layout = "default";
         eww.layout = "trench";
         rofi.layout = "trench";

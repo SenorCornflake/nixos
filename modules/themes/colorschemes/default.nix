@@ -53,13 +53,6 @@ mkIf (cfg.colorscheme == "default") {
           text-color = hex colors.foreground;
           selection-color = hex colors.accent;
         };
-        waybar.layouts = {
-          default = {
-            background = hex colors.background;
-            foreground = hex colors.foreground;
-            border = hex colors.alt-background;
-          };
-        };
         eww.layouts = {
           default = {
             background = hex colors.background;

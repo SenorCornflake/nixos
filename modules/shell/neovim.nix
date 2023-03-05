@@ -137,7 +137,7 @@ in
             p.yaml
             p.toml
             #p.sql
-            p.ini
+            #p.ini
             p.latex
             p.c
             p.cpp
@@ -177,7 +177,7 @@ in
           winshift-nvim
           fwatch-nvim
           nvim-navic
-          heirline-nvim
+          #heirline-nvim
 
           catppuccin-nvim
           gruvbox-material

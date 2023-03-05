@@ -3,9 +3,9 @@
 with lib;
 with lib.my;
 
-{
+mkIf config.modules.desktop.hyprland.enable {
   environment.systemPackages = with pkgs; [
-    (writeShellScriptBin "toggle_touchpad_typing" ''
+    (writeShellScriptBin "hyprland_toggle_touchpad_typing" ''
       PATH=${makeBinPath (with pkgs; [ libnotify jq inputs.hyprland.packages.x86_64-linux.default ])} 
 
       if [[ $(hyprctl getoption input:touchpad:disable_while_typing -j | jq -r ".int") == "1" ]]; then

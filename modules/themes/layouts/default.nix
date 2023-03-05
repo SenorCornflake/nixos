@@ -16,7 +16,6 @@ mkIf (cfg.layout == null || cfg.layout == "default") {
 
       programs = {
         mako.layout = "default";
-        waybar.layout = "default";
         tofi.layout = "default";
         rofi.layout = "default";
         wlogout.layout = "default";

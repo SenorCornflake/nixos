@@ -14,10 +14,11 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      #blender
+      blender
       krita
       (inkscape-with-extensions.override {
         inkscapeExtensions = (with inkscape-extensions; [
+          # This doesn't build
           #inkcut
         ]);
       })

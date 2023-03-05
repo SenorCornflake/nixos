@@ -5,7 +5,7 @@
 	},
 	{
 		"name": "Toggle touchpad while typing",
-		"action": "toggle_touchpad_typing"
+		"action": "hyprland_toggle_touchpad_typing"
 	},
 	{
 		"name": "Change Wallpaper",

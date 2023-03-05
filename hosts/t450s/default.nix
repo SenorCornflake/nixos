@@ -21,7 +21,7 @@
       };
 
       editors = {
-        vscode.enable = true;
+        vscode.enable = false;
       };
 
       terminals = {
@@ -36,14 +36,14 @@
         rofi.enable = true;
         ark.enable = true;
         thunar.enable = true;
-        mako.enable = true;
-        eww.enable = true;
+        mako.enable = false;
+        eww.enable = false;
         pavucontrol.enable = true;
         blueberry.enable = true;
         okular.enable = true;
         zeal.enable = true;
         whatsapp.enable = true;
-        hyprpicker.enable = true;
+        virtualbox.enable = true;
       };
 
       games = {

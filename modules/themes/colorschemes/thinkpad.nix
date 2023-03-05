@@ -64,13 +64,6 @@ mkIf (cfg.colorscheme == "thinkpad") {
             border = hex colors.background;
           };
         };
-        waybar.layouts = {
-          default = {
-            background = hex colors.background;
-            foreground = hex colors.foreground;
-            border = hex colors.red-0;
-          };
-        };
         eww.layouts = {
           default = {
             background = hex colors.background;

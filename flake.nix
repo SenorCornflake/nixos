@@ -25,8 +25,6 @@
       url = "github:hyprwm/Hyprland";
       #inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprpicker.url = "github:hyprwm/Hyprland";
-    #hyprpicker.inputs.nixpkgs.follows = "nixpkgs";
 
     neovim-nightly = {
       url = "github:nix-community/neovim-nightly-overlay";
@@ -104,7 +102,7 @@
 			overlays = [
 				inputs.nur.overlay
 				#inputs.neovim-nightly.overlay # This does compile now so disable it
-                inputs.hyprpicker.overlays.default
+                #inputs.hyprpicker.overlays.default
                 # TODO: Automate this
 				(final: prev: {
                   auto-base16-theme = final.callPackage ./packages/auto-base16-theme {};

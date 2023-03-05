@@ -105,13 +105,6 @@ mkIf (cfg.colorscheme == "base16") {
             accent = hex base0E;
           };
         };
-        waybar.layouts = {
-          default = {
-            background = hex base0C;
-            foreground = hex base00;
-            border = hex base00;
-          };
-        };
         eww.layouts = {
           default = {
             background = hex base0C;
