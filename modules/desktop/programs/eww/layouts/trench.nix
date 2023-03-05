@@ -178,7 +178,8 @@ in
         color: #${layout.foreground};
       }
       tooltip {
-        background: #000000;
+        background: #${layout.background};
+        color: #${layout.foreground};
         padding: 2rem;
         border-radius: 10px;
       }
@@ -211,8 +212,8 @@ in
       }
 
       .workspaces .active-workspace {
-        background-color: #${layout.foreground};
-        color: #${layout.background};
+        background-color: #${layout.background};
+        color: #${layout.foreground};
         border: solid 2px rgba(${hexToRGBString "," layout.background}, 0.4);
         border-radius: 10px;
         padding: 5px;
