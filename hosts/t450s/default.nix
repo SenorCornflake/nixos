@@ -7,12 +7,12 @@
 
   modules = {
     theme = {
-      colorscheme = "base16";
-      layout = "trench";
+      colorscheme = "default";
+      layout = "default";
     };
 
     desktop = {
-      hyprland.enable = true;
+      kde.enable = true;
       gtk.enable = true;
       qt.enable = true;
 
@@ -32,15 +32,16 @@
         graphics.enable = true;
         media.enable = true;
         office.enable = true;
+        gparted.enable = true;
         qbittorrent.enable = true;
         ark.enable = true;
-        thunar.enable = true;
         pavucontrol.enable = true;
         blueberry.enable = true;
         okular.enable = true;
         zeal.enable = true;
         whatsapp.enable = true;
         virtualbox.enable = true;
+        protonvpn.enable = true;
       };
 
       games = {
@@ -50,7 +51,7 @@
         cataclysm-dda.enable = true;
         openttd.enable = true;
         wesnoth.enable = false;
-        xonotic.enable = false;
+        xonotic.enable = true;
         zeroad.enable = false;
         endless-sky.enable = true;
         freeciv.enable = true;

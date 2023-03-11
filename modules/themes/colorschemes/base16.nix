@@ -38,7 +38,7 @@ in
 
 mkIf (cfg.colorscheme == "base16") {
   home-manager.users."${config.userName}" = {
-    programs.mako = {
+    services.mako = {
       backgroundColor = hex base00;
       borderColor = hex base09;
       textColor = hex base05;

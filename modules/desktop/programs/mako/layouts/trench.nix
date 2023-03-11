@@ -10,7 +10,7 @@ in
 
 mkIf (cfg.layout == "trench") {
   home-manager.users."${config.userName}" = {
-    programs.mako = {
+    services.mako = {
       height = 300;
       width = 300;
       borderSize = 2;

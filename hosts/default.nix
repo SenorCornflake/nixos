@@ -23,8 +23,6 @@ with lib.my;
     };
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   time.timeZone = "Africa/Johannesburg";
   i18n.defaultLocale = "en_US.UTF-8";
 

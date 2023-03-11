@@ -25,7 +25,9 @@ in
               bitwarden
               ublock-origin
               h264ify
-            ];
+            ] ++ (if config.modules.desktop.kde.enable then [
+              plasma-integration
+            ] else []);
           };
         };
       };

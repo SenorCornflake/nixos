@@ -10,7 +10,7 @@ in
 
 mkIf (cfg.layout == null || cfg.layout == "default") {
   home-manager.users."${config.userName}" = {
-    programs.mako = {
+    services.mako = {
       height = 300;
       width = 300;
       borderSize = 2;

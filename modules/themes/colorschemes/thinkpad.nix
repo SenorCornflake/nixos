@@ -19,7 +19,7 @@ in
 
 mkIf (cfg.colorscheme == "thinkpad") {
   home-manager.users."${config.userName}" = {
-    programs.mako = {
+    services.mako = {
       backgroundColor = hex colors.red-1;
       borderColor = hex colors.red-2;
       textColor = hex colors.foreground;

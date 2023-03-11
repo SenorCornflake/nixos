@@ -19,5 +19,10 @@ in
       desktopManager.plasma5.enable = true;
       displayManager.sddm.enable = true;
     };
+
+    environment.systemPackages = with pkgs; [
+      libsForQt5.bismuth
+      libsForQt5.kdeconnect-kde
+    ];
   };
 }

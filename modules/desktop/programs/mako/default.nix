@@ -18,7 +18,7 @@ in
     environment.systemPackages = with pkgs; [ libnotify ];
 
     home-manager.users."${config.userName}" = {
-      programs.mako = {
+      services.mako = {
         enable = true;
       };
     };

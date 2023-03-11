@@ -46,6 +46,7 @@ in
       eww.enable = true;
       mako.enable = true;
       rofi.enable = true;
+      thunar.enable = true;
     };
     environment.systemPackages = with pkgs; [
       polkit_gnome
@@ -57,6 +58,7 @@ in
       commander
       grim
       slurp
+      xdg-desktop-portal-wlr
       (writeShellScriptBin "X" ''
         cd ~
 
@@ -86,6 +88,7 @@ in
           exec-once = xset r 66
           exec-once = ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
           exec-once = restore_nightmode_state
+          exec-once = xdg-desktop-portal-wlr &
           exec = pkill mako
           exec-once = xhost +local:
           exec-once = idle_manager
@@ -100,7 +103,6 @@ in
 
               repeat_rate = 30
               repeat_delay = 250
-bool
               follow_mouse = 0
 
               touchpad {
