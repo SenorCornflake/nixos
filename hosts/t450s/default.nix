@@ -42,6 +42,7 @@
         whatsapp.enable = true;
         virtualbox.enable = true;
         protonvpn.enable = true;
+        veracrypt.enable = true;
       };
 
       games = {
@@ -60,6 +61,7 @@
     };
 
     servers = {
+      samba.enable = true;
       apache.enable = true;
     };
 

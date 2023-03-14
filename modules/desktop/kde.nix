@@ -23,6 +23,7 @@ in
     environment.systemPackages = with pkgs; [
       libsForQt5.bismuth
       libsForQt5.kdeconnect-kde
+      libsForQt5.kdenetwork-filesharing
     ];
   };
 }
