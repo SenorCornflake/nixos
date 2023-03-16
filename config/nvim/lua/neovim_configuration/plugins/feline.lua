@@ -347,4 +347,3 @@ end
 -- Sometimes, after reloading, the highlights just don't work, so reload the bar every few autocommands
 SetupStatusline()
 cmd "autocmd User ThemeLoaded lua SetupStatusline()"
-cmd "autocmd User PostManipulation lua SetupStatusline()"

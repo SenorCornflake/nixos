@@ -24,6 +24,16 @@ in
       libsForQt5.bismuth
       libsForQt5.kdeconnect-kde
       libsForQt5.kdenetwork-filesharing
+      libsForQt5.qt5.qtbase
+      qt6.qtbase
+      aha
+      pciutils
+      glxinfo
+      vulkan-tools
+      xorg.xdpyinfo
+      unixtools.quota
     ];
+
+    services.fwupd.enable = true;
   };
 }

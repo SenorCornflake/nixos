@@ -15,7 +15,7 @@ in
   config = mkIf cfg.enable {
     home-manager.users."${config.userName}".programs.vscode = {
       enable = true;
-      package = pkgs-unstable.vscode;
+      package = pkgs.vscode;
       userSettings = {
           "vim.insertModeKeyBindings" = [
               {
@@ -24,7 +24,7 @@ in
               }
           ];
           "editor.fontFamily" = "'Iosevka Nerd Font'";
-          "editor.fontSize" = 15;
+          "editor.fontSize" = 14;
           "workbench.colorTheme" = "Enfocado Dark Nature";
         };
       extensions = with pkgs; [

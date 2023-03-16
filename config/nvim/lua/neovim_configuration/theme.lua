@@ -1,29 +1,23 @@
 local util = require "neovim_configuration.util"
-local cmd = vim.cmd
+local config_home = os.getenv("XDG_CONFIG_HOME")
+local data_home = os.getenv("XDG_DATA_HOME")
 
-MANIPULATE_COLORSCHEME = function()
-	if util.is_transparent_background() then
-		vim.cmd "hi Normal guibg=none ctermbg=none"
-		vim.cmd "hi NormalNC guibg=none ctermbg=none"
-		vim.cmd "hi NormalFloat guibg=none ctermbg=none"
-	end
+COLORS = {}
 
-	vim.cmd "doautocmd User PostManipulation"
-end
-
--- All the doautocmds here are from before I used nix, it was for lazy loading, I don't lazy load anymore because of some issues I had but I think I'll leave these doautocmds here for future reference
 LOAD_THEME = function(name)
-	-- Clear all highlights so that no remnants of the previous colorscheme remains ( We already do this for gitsigns and lsp diagnostics independantly in their respective config files,
-	-- this is just to affirm that in the rare cases where a highlight would remain that it doesn't happen )
+	-- Reset all highlights
 	vim.cmd "hi clear"
 
 	local colorscheme = nil
 
+	-- Use colorscheme provided
 	if name then
 		colorscheme = name
+	-- Otherwise check for colorscheme in file
 	else
-		colorscheme = io.open(os.getenv("XDG_DATA_HOME") .. "/neovim_colorscheme.txt", "r")
+		colorscheme = io.open(data_home .. "/neovim_colorscheme.txt", "r")
 
+		-- If file doesn't exist, resort to default theme
 		if colorscheme == nil then
 			colorscheme = "default"
 		else
@@ -31,29 +25,66 @@ LOAD_THEME = function(name)
 		end
 	end
 
-	local config_dir = os.getenv("XDG_CONFIG_HOME")
-	local has_theme = util.file_exists(config_dir .. "/nvim/lua/neovim_configuration/themes/" .. colorscheme .. ".lua")
+	-- Check if we have a config file for this colorscheme
+	local has_special_config = util.file_exists(config_home .. "/nvim/lua/neovim_configuration/themes/" .. colorscheme .. ".lua")
 
-	if not has_theme then
-		cmd ("doautocmd User load_" .. colorscheme .. "_theme")
-		cmd ("colorscheme " .. colorscheme)
+	-- If we do, use it
+	if has_special_config then
+		dofile(config_home .. "/nvim/lua/neovim_configuration/themes/" .. colorscheme .. ".lua")
+	-- Otherwise just apply the colorscheme
 	else
-		if colorscheme == "default" then
-			cmd "colorscheme default"
-			return
-		end
-
-		cmd ("doautocmd User load_" .. colorscheme .. "_theme")
-		dofile(os.getenv("XDG_CONFIG_HOME") .. "/nvim/lua/neovim_configuration/themes/" .. colorscheme .. ".lua")
-		--require("neovim_configuration.themes." .. colorscheme)
+		vim.cmd("colorscheme " .. colorscheme)
 	end
 
-	MANIPULATE_COLORSCHEME()
+	-- Check if we need a transparent background
+	if util.is_transparent_background() then
+		vim.cmd "hi Normal guibg=none ctermbg=none"
+		vim.cmd "hi NormalNC guibg=none ctermbg=none"
+		vim.cmd "hi NormalFloat guibg=none ctermbg=none"
+	end
 
-	cmd "doautocmd User ThemeLoaded"
+	COLORS.bg = util.get_color ({{ "Normal", "bg" }}, { gui = "none", cterm = "none" })
+	COLORS.darkbg = {
+		gui = util.shade_color(COLORS.bg.gui, -20),
+		cterm = COLORS.bg.cterm
+	}
+	COLORS.darkerbg = {
+		gui = util.shade_color(COLORS.bg.gui, -40),
+		cterm = COLORS.bg.cterm
+	}
+	COLORS.lightbg = {
+		gui = util.shade_color(COLORS.bg.gui, 20),
+		cterm = COLORS.bg.cterm
+	}
+	COLORS.lighterbg = {
+		gui = util.shade_color(COLORS.bg.gui, 40),
+		cterm = COLORS.bg.cterm
+	}
+	COLORS.sign_bg = util.get_color ({{ "SignColumn", "bg" }, { "Normal", "bg" }}, { gui = "none", cterm = "none" })
+	COLORS.fg = util.get_color {{ "Normal", "fg" }}
+	COLORS.error = util.get_color {{ "ErrorMsg", "fg" }}
+	COLORS.warn = util.get_color {{ "Constant", "fg" }, { "WarningMsg", "fg" }, { "Boolean", "fg" }}
+	COLORS.hint = util.get_color {{ "Special", "fg" }, { "Function", "fg" }, { "Include", "fg" }}
+	COLORS.info = util.get_color {{ "String", "fg" }, { "DiffAdded", "fg" }, { "DiffAdd", "fg" }}
+	COLORS.add = util.get_color {{ "GitSignsAdd", "fg" }, { "GitGutterAdd", "fg" }}
+	COLORS.delete = util.get_color {{ "GitSignsDelete", "fg" }, { "GitGutterDelete", "fg" }}
+	COLORS.change = util.get_color {{ "GitSignsChange", "fg" }, { "GitGutterChange", "fg" }}
+
+	-- Check if theme has lsp support
+	local has_lsp_support = util.get_color({{"DiagnosticError", "fg"}}, { cterm = false, gui = false })
+
+	if not has_lsp_support.gui or not has_lsp_support.cterm then
+		vim.cmd("highlight DiagnosticSignError guifg=" .. COLORS.error.gui .. " guibg=" .. COLORS.sign_bg.gui .. " ctermfg=" .. COLORS.error.cterm .. " ctermbg=" .. COLORS.sign_bg.cterm)
+		vim.cmd("highlight DiagnosticSignWarn  guifg=" .. COLORS.warn.gui  .. " guibg=" .. COLORS.sign_bg.gui .. " ctermfg=" .. COLORS.warn.cterm  .. " ctermbg=" .. COLORS.sign_bg.cterm)
+		vim.cmd("highlight DiagnosticSignInfo  guifg=" .. COLORS.info.gui  .. " guibg=" .. COLORS.sign_bg.gui .. " ctermfg=" .. COLORS.info.cterm  .. " ctermbg=" .. COLORS.sign_bg.cterm)
+		vim.cmd("highlight DiagnosticSignHint  guifg=" .. COLORS.hint.gui  .. " guibg=" .. COLORS.sign_bg.gui .. " ctermfg=" .. COLORS.hint.cterm  .. " ctermbg=" .. COLORS.sign_bg.cterm)
+		vim.cmd("highlight DiagnosticError guifg=" .. COLORS.error.gui .. " guibg=" .. COLORS.bg.gui .. " ctermfg=" .. COLORS.error.cterm .. " ctermbg=" .. COLORS.bg.cterm)
+		vim.cmd("highlight DiagnosticWarn  guifg=" .. COLORS.warn.gui  .. " guibg=" .. COLORS.bg.gui .. " ctermfg=" .. COLORS.warn.cterm  .. " ctermbg=" .. COLORS.bg.cterm)
+		vim.cmd("highlight DiagnosticInfo  guifg=" .. COLORS.info.gui  .. " guibg=" .. COLORS.bg.gui .. " ctermfg=" .. COLORS.info.cterm  .. " ctermbg=" .. COLORS.bg.cterm)
+		vim.cmd("highlight DiagnosticHint  guifg=" .. COLORS.hint.gui  .. " guibg=" .. COLORS.bg.gui .. " ctermfg=" .. COLORS.hint.cterm  .. " ctermbg=" .. COLORS.bg.cterm)
+	end
+
+	vim.cmd "doautocmd User ThemeLoaded"
 end
-
 LOAD_THEME()
-
-cmd "autocmd VimEnter, ColorScheme * lua LOAD_THEME()"
-cmd "autocmd ColorScheme * lua MANIPULATE_COLORSCHEME()"
+vim.cmd "autocmd VimEnter, ColorScheme * lua LOAD_THEME()"

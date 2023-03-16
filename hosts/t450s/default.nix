@@ -21,7 +21,7 @@
       };
 
       editors = {
-        vscode.enable = false;
+        vscode.enable = true;
       };
 
       terminals = {
